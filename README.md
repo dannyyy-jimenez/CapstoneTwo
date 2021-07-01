@@ -1,14 +1,12 @@
 # Proposals
 ---
 
+
+### Image Classification and NLP on MCU Script
+Using the Avengers dataset of images and the MCU database with the scripts from the films. I'll run image classification on the images to predict who is who. And Using the script database ill do NLP to predict who said the line.
+
 ### Image Classification on Different Artists
   I'll webscrape a bunch of google images by search query for different artists and download images for different artists. Then I'll make a classifier to be able to predict which artist is in the picture.
-
-
-### NLP on Messenger Messages
-
-  Using Selenium I'll query a bunch of messages from my messenger on different people and given a "test message" ill have my model predict who sent the message based on the lingo they use.
-
 
 ### Prediction on Pneumonia Based on Images
 
