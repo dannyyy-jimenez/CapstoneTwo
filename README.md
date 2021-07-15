@@ -3,9 +3,9 @@ This project was possible due to the datasets available on [www.kaggle.com](http
   * [MCU Cast Headshots](https://www.kaggle.com/rawatjitesh/avengers-face-recognition/discussion)
   * [MCU Scripts](https://www.kaggle.com/pdunton/marvel-cinematic-universe-dialogue?select=mcu.csv)
 
-__TO RUN THIS PROJECT, YOU MUST ADD THE DATA INTO THE DATA FOLDER__
-__DATA > IMAGES > ALL [FOR THE IMAGES]__
-__DATA > MCU.CSV [FOR THE SCRIPTS]__
+##### __TO RUN THIS PROJECT, YOU MUST ADD THE DATA INTO THE DATA FOLDER__
+##### __DATA > IMAGES > ALL [FOR THE IMAGES]__
+##### __DATA > MCU.CSV [FOR THE SCRIPTS]__
 ---
 
 ## Natural Language Processing
