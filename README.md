@@ -27,7 +27,7 @@ This project was possible due to the datasets available on [www.kaggle.com](http
 
 #### Exploratory Data Analysis
 
-I explored a variety of characters and their lines within the film but there was a very noticeable imbalance within the amount of lines each character had. __Tony Stark came in first with a total of ~1400 lines.__ Below is a bar chart of the 5 characters I chose for my initial analysis but within my [plots](github.com) folder you'll find other examples I did as well.
+I explored a variety of characters and their lines within the film but there was a very noticeable imbalance within the amount of lines each character had. __Tony Stark came in first with a total of ~1700 lines.__ Below is a bar chart of the 5 characters I chose for my initial analysis but within my [plots](github.com) folder you'll find other examples I did as well.
 
 ![# of Lines](./plots/line_dist-THOR-STEVE_ROGERS-TONY_STARK-HULK-NATASHA_ROMANOFF.png)
 
