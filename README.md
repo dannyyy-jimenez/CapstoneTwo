@@ -8,6 +8,10 @@ This project was possible due to the datasets available on [www.kaggle.com](http
 ##### __DATA > MCU.CSV [FOR THE SCRIPTS]__
 ---
 
+See my slideshow presentation -> https://docs.google.com/presentation/d/1jZAaJ9fcv64-ndfwdH1Vw5dqB6IYyTe3vrMo1pGYMp0/edit?usp=sharing
+
+---
+
 ## Natural Language Processing
 * Limitations and Challenges
   * Data Imbalance
@@ -176,7 +180,7 @@ In order to be able to do good image classification and not over complicate thin
 
 ![Simple Conv Neural Network](plots/confusion_matrix_Default_Convolutional_Neural_Network.png)
 
-##### Simple Convolutional Neural Network
+##### Custom Convolutional Neural Network
 
 ![Custom Conv Neural Network](plots/confusion_matrix_Custom_Convolutional_Neural_Network.png)
 

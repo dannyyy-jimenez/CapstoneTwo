@@ -16,7 +16,6 @@ nnclf.predictions()
 nnclf.model.evaluate(nnclf.X_test, nnclf.y_test)
 PlotConfusionMatrix(nnclf)
 PlotAccuracy(nnclf)
-
 PlotLoss(nnclf)
 
 def_cnnclf = DefaultCNNModel(mcu)
@@ -68,6 +67,6 @@ ironman_steve_thor = NLP.MCU(['THOR', 'STEVE ROGERS', 'TONY STARK'], stop_words=
 ironman_steve_thor.fit(1000)
 ironman_steve_thor.wrongs()
 
-imgclf_five = NLP.MCU(['THOR', 'STEVE ROGERS', 'TONY STARK', 'HULK', "NATASHA ROMANOFF"], stop_words='english')
-imgclf_five.fit()
+imgclf_five = NLP.MCU(['THOR', 'STEVE ROGERS', 'TONY STARK', 'HULK', "NATASHA ROMANOFF"], stop_words=stop_words)
+imgclf_five.fit(1000)
 imgclf_five.wrongs()

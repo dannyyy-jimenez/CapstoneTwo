@@ -64,18 +64,16 @@ def PlotAccuracy(model):
     None
 
     """
-    plt.plot(model.history.history['accuracy'])
-    legends = ['train']
+    fig, ax = plt.subplots(figsize=(8, 8))
+    ax.plot(model.history.history['accuracy'], label="train")
     if 'val_accuracy' in model.history.history:
-        plt.plot(model.history.history['val_accuracy'])
-        legends.append('train')
+        ax.plot(model.history.history['val_accuracy'], label='test')
 
-    plt.title(f'{model.name} Model Accuracy')
-    plt.ylabel('accuracy')
-    plt.xlabel('epoch')
-    plt.legend(legends, loc='upper left')
-    plt.show()
-    plt.savefig(f'../plots/accuracy_{model.name}_model.png')
+    ax.set_title(f'{model.name} Model Accuracy')
+    ax.set_ylabel('accuracy')
+    ax.set_xlabel('epoch')
+    fig.legend(loc='upper left')
+    fig.savefig(f'../plots/accuracy_{model.name}_model.png')
     pass
 
 
@@ -95,6 +93,7 @@ def PlotLoss(model):
     ax.plot(model.history.history['loss'], label='train')
     if 'val_loss' in model.history.history:
         ax.plot(model.history.history['val_loss'], label='test')
+        ax.set_ylim([0, 25])
 
     ax.set_title(f'{model.name} Model Loss')
     ax.set_ylabel('loss')
@@ -123,12 +122,19 @@ class MCU():
         self.X = []
         self.y = []
 
+        imageDist = {}
+
         for imagename in os.listdir('../data/images/all'):
             filename = f'../data/images/all/{imagename}'
             hero_name = self.GetName(imagename)
 
             if hero_name not in self.characters:
                 continue
+
+            if formatted_characters[hero_name] in imageDist:
+                imageDist[formatted_characters[hero_name]] += 1
+            else:
+                imageDist[formatted_characters[hero_name]] = 1
 
             image = load_img(filename, target_size=(IMAGE_SIZE, IMAGE_SIZE, 3))
             data = np.array(image)
@@ -146,7 +152,15 @@ class MCU():
         self.X = np.array(self.X)
         self.y = np.array(self.y)
 
+        self.PlotDist(imageDist)
         self.PlotSampleImages()
+
+    def PlotDist(self, dist):
+        fig, ax = plt.subplots(1, figsize=(8, 8))
+        ax.set_title("Distribution of Images")
+        ax.bar(dist.keys(), dist.values())
+        fig.tight_layout()
+        fig.savefig(f"../plots/image_dist_{'_'.join(self.characters)}.png")
 
     def fit(self):
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y)
@@ -303,7 +317,7 @@ class DefaultNNModel(Classifier):
             keras.layers.Dense(5, activation='softmax')
         ])
         self.model.compile(optimizer='adam', loss=keras.losses.CategoricalCrossentropy(), metrics=['accuracy'])
-        self.history = self.model.fit(self.X_train, self.y_train, epochs=5, batch_size=32)
+        self.history = self.model.fit(self.X_train, self.y_train, epochs=45, batch_size=32, validation_data=(self.X_test, self.y_test))
         self.y_pred = self.model.predict(self.X_test).argmax(axis=1)
         true_vals = self.y_test.argmax(axis=1)
         self.cm = confusion_matrix(y_true=true_vals, y_pred=self.y_pred)
@@ -335,7 +349,7 @@ class DefaultCNNModel(Classifier):
         ])
 
         self.model.compile(optimizer='adam', loss=keras.losses.CategoricalCrossentropy(), metrics=['accuracy'])
-        self.history = self.model.fit(self.X_train, self.y_train, epochs=5, batch_size=32)
+        self.history = self.model.fit(self.X_train, self.y_train, epochs=45, batch_size=32, validation_data=(self.X_test, self.y_test))
         self.y_pred = self.model.predict(self.X_test).argmax(axis=1)
         true_vals = self.y_test.argmax(axis=1)
         self.cm = confusion_matrix(y_true=true_vals, y_pred=self.y_pred)
